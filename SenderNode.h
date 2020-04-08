@@ -15,6 +15,7 @@ private:
 public:
 	SenderNode();
 	SenderNode(const char* data, int dataSize, int dataRate);
+	SenderNode(int dataSize, int dataRate);
 	~SenderNode();
 	SenderNode(SenderNode& other);
 	SenderNode(SenderNode&& other);

@@ -26,7 +26,6 @@ void a_tdma() {
 	nodes[3] = SenderNode("000100100001111110111010100001001011110101000011000110100100", 60, 4);
 
 	Channel channel(nodes, 4, 30);
-	channel.generate_and_assign_walsh_code_to_nodes();
 	channel.tdma();
 }
 
@@ -40,24 +39,75 @@ void a_dtdma() {
 	nodes[3] = SenderNode("000100100001111110111010100001001011110101000011000110100100", 60, 4);
 
 	Channel channel(nodes, 4, 30);
-	channel.generate_and_assign_walsh_code_to_nodes();
 	channel.dtdma();
 }
 
 void b_cdma() {
+	srand((unsigned)time(0));
 
+	SenderNode* nodes = new SenderNode[400];
+	for (int i = 0; i < 100; i++) {
+		nodes[i] = SenderNode(110, 5);
+	}
+	for (int i = 100; i < 200; i++) {
+		nodes[i] = SenderNode(75, 3);
+	}
+	for (int i = 200; i < 300; i++) {
+		nodes[i] = SenderNode(94, 2);
+	}
+	for (int i = 300; i < 400; i++) {
+		nodes[i] = SenderNode(60, 4);
+	}
+
+	Channel channel(nodes, 400, 30);
+	channel.generate_and_assign_walsh_code_to_nodes();
+	channel.cdma();
 }
 
 void b_tdma() {
+	srand((unsigned)time(0));
 
+	SenderNode* nodes = new SenderNode[400];
+	for (int i = 0; i < 100; i++) {
+		nodes[i] = SenderNode(110, 5);
+	}
+	for (int i = 100; i < 200; i++) {
+		nodes[i] = SenderNode(75, 3);
+	}
+	for (int i = 200; i < 300; i++) {
+		nodes[i] = SenderNode(94, 2);
+	}
+	for (int i = 300; i < 400; i++) {
+		nodes[i] = SenderNode(60, 4);
+	}
+
+	Channel channel(nodes, 400, 30);
+	channel.tdma();
 }
 
 void b_dtdma() {
+	srand((unsigned)time(0));
 
+	SenderNode* nodes = new SenderNode[400];
+	for (int i = 0; i < 100; i++) {
+		nodes[i] = SenderNode(110, 5);
+	}
+	for (int i = 100; i < 200; i++) {
+		nodes[i] = SenderNode(75, 3);
+	}
+	for (int i = 200; i < 300; i++) {
+		nodes[i] = SenderNode(94, 2);
+	}
+	for (int i = 300; i < 400; i++) {
+		nodes[i] = SenderNode(60, 4);
+	}
+
+	Channel channel(nodes, 400, 30);
+	channel.dtdma();
 }
 
 
 int main() {
-	a_dtdma();
+	b_dtdma();
 	return 0;
 }

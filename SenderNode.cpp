@@ -16,6 +16,16 @@ SenderNode::SenderNode(const char* data, int dataSize, int dataRate)
 	}
 }
 
+SenderNode::SenderNode(int dataSize, int dataRate)
+{
+	_dataSize = dataSize;
+	_dataRate = dataRate;
+	_data = new bool[_dataSize];
+	for (int i = 0; i < _dataSize; ++i) {
+		_data[i] = rand() % 2;
+	}
+}
+
 SenderNode::~SenderNode()
 {
 	if(_walshCode != nullptr)

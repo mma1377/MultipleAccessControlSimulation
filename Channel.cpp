@@ -6,7 +6,7 @@ Channel::Channel(SenderNode* nodes, int numOfNodes, int channelCap)
 	_nodes = nodes;
 	_numOfNodes = numOfNodes;
 	_channelCapacity = channelCap;
-	_walshCodeSize = std::pow(2, std::floor(std::log2(_numOfNodes)));
+	_walshCodeSize = std::pow(2, std::ceil(std::log2(_numOfNodes)));
 	_tdmaChannel = new int[_channelCapacity];
 	_cdmaChannel = new int[_channelCapacity * _walshCodeSize];
 	for (int i = 0; i < _channelCapacity; ++i)
@@ -104,6 +104,7 @@ void Channel::cdma()
 			for (int j = 0; j < _channelCapacity * _walshCodeSize; ++j) {
 				_cdmaChannel[j] += encodedData[j];
 			}
+			delete[] encodedData;
 		}
 
 		_virtualTime += timeSlot;
